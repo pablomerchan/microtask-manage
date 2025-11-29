@@ -20,7 +20,7 @@ Una aplicación de gestión de tareas basada en una arquitectura simulada de mic
 
 1.  Clonar el repositorio:
     ```bash
-    git clone <url-de-tu-repo>
+    git clone https://github.com/pablomerchan/microtask-manage.git
     cd microtask-manager
     ```
 
@@ -37,34 +37,6 @@ Una aplicación de gestión de tareas basada en una arquitectura simulada de mic
     npm start
     ```
 
-## 📤 Cómo publicar en GitHub
-
-Sigue estos pasos para subir este proyecto a un nuevo repositorio:
-
-1.  **Inicializar Git**:
-    ```bash
-    git init
-    ```
-
-2.  **Agregar archivos**:
-    ```bash
-    git add .
-    ```
-
-3.  **Hacer el primer commit**:
-    ```bash
-    git commit -m "Initial commit: MicroTask Manager application"
-    ```
-
-4.  **Conectar con GitHub**:
-    *   Crea un nuevo repositorio en GitHub (sin README ni .gitignore, ya que ya los tienes).
-    *   Copia la URL del repositorio (ej. `https://github.com/usuario/microtask-manager.git`).
-    *   Ejecuta:
-        ```bash
-        git branch -M main
-        git remote add origin <URL_DE_TU_REPO>
-        git push -u origin main
-        ```
 
 ## 🏗️ Arquitectura
 
