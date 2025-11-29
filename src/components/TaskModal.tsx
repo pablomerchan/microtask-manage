@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Task } from '../types';
 import { Button } from './Button';
 import { Input } from './Input';
-import { GoogleGenAI } from "@google/genai";
 
 interface TaskModalProps {
   isOpen: boolean;
@@ -16,7 +15,6 @@ export const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, onSave, i
   const [description, setDescription] = useState('');
   const [status, setStatus] = useState<Task['status']>('pending');
   const [isSaving, setIsSaving] = useState(false);
-  const [isGenerating, setIsGenerating] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -31,34 +29,6 @@ export const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, onSave, i
       }
     }
   }, [isOpen, initialData]);
-
-  const handleGenerateDescription = async () => {
-    if (!title) return;
-    setIsGenerating(true);
-    try {
-      const apiKey = process.env.API_KEY;
-      if (!apiKey) {
-          // Fallback if no key is present in this mocked env
-          setDescription("AI generation requires an API Key. Please describe: " + title);
-          return;
-      }
-
-      const ai = new GoogleGenAI({ apiKey });
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: `Write a concise, professional task description (max 3 sentences) for a task titled: "${title}". Use an active voice.`,
-      });
-      
-      if (response.text) {
-        setDescription(response.text.trim());
-      }
-    } catch (e) {
-      console.error("AI Error:", e);
-      setDescription("Could not generate description automatically.");
-    } finally {
-      setIsGenerating(false);
-    }
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -105,17 +75,6 @@ export const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, onSave, i
           <div className="flex flex-col gap-1">
             <div className="flex justify-between items-center">
               <label className="text-sm font-semibold text-slate-700">Descripción</label>
-              {process.env.API_KEY && (
-                 <button
-                    type="button"
-                    onClick={handleGenerateDescription}
-                    disabled={!title || isGenerating}
-                    className="text-xs text-purple-600 hover:text-purple-700 flex items-center gap-1 disabled:opacity-50"
-                  >
-                    <i className={`fas fa-magic ${isGenerating ? 'animate-pulse' : ''}`}></i>
-                    {isGenerating ? 'Generando...' : 'Generar con IA'}
-                  </button>
-              )}
             </div>
             <textarea 
               className="px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none h-32 resize-none bg-white"

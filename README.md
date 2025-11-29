@@ -4,43 +4,74 @@ Una aplicación de gestión de tareas basada en una arquitectura simulada de mic
 
 ## 🚀 Características
 
-1.  **Microservicio de Autenticación (Simulado)**: Registro e inicio de sesión con persistencia local.
-2.  **Microservicio de Tareas (Simulado)**: CRUD completo de tareas aislado por usuario.
-3.  **Integración IA**: Generación de contenido asistida por Google Gemini.
-4.  **UI/UX Moderno**: Diseño responsivo utilizando Tailwind CSS.
+1.  **Microservicio de Autenticación (Simulado)**: Registro e inicio de sesión con persistencia local (`localStorage`).
+2.  **Microservicio de Tareas (Simulado)**: CRUD completo de tareas (Crear, Leer, Actualizar, Borrar) aislado por ID de usuario.
+3.  **UI/UX Moderno**: Diseño limpio y responsivo utilizando Tailwind CSS.
 
 ## 🛠️ Tecnologías
 
-*   React 19
-*   TypeScript
-*   Tailwind CSS
-*   Google GenAI SDK
+*   **Frontend**: React 18
+*   **Lenguaje**: TypeScript
+*   **Estilos**: Tailwind CSS
+*   **Iconos**: FontAwesome
 
 ## 📦 Instalación y Ejecución
 
-1.  Clonar el repositorio:
+1.  **Clonar el repositorio**:
     ```bash
     git clone https://github.com/pablomerchan/microtask-manage.git
     cd microtask-manager
     ```
 
-2.  Instalar dependencias:
+2.  **Instalar dependencias**:
     ```bash
     npm install
     ```
 
-3.  Configurar variables de entorno:
-    Crea un archivo `.env` en la raíz (si es necesario para tu entorno local) o asegura que la API Key de Gemini esté disponible en `process.env.API_KEY`.
+   Esto descargará React, Vite, TypeScript y Tailwind según lo definido en el package.json.
 
-4.  Iniciar la aplicación:
+
+3.  **Iniciar la aplicación**:
     ```bash
-    npm start
+    npm run dev
     ```
+Vera un mensaje indicando que el servidor está corriendo, generalmente en: 
+http://localhost:3000.
+
+Uso de la Aplicación
+Abra el navegador en esa dirección. Como simulamos una base de datos local (localStorage):
+Registro: Al entrar verás la pantalla de Login. Haz clic en "Registrarse", llena los datos (Nombre, Usuario, Contraseña) y crea tu cuenta.
+Login: Usa las credenciales que acabas de crear para ingresar.
+Gestión:
+Crear: Botón "Nueva" arriba a la derecha.
+Editar: Icono de lápiz sobre una tarea (aparece al pasar el mouse).
+Borrar: Icono de basura.
+Filtros: Usa los botones "Todas/Pendientes/Completadas" para filtrar la lista.
+Si cierras el navegador y vuelves a entrar, tus datos seguirán ahí (mientras no borres la caché del navegador), ya que se guardan en el almacenamiento local de tu navegador simulando una base de datos real.
 
 
-## 🏗️ Arquitectura
 
-La aplicación utiliza un patrón de **Servicios** en el frontend para desacoplar la vista de la lógica de datos, simulando llamadas a APIs REST:
+## 🏗️ Arquitectura y Estructura
 
-*   `services/authService.ts`: Maneja la lógica de usuarios.
-*   `services/taskService.ts`: Maneja la lógica de negocio de las tareas.
+La aplicación utiliza un patrón de **Servicios** en el frontend para desacoplar la vista de la lógica de datos, simulando la interacción con Microservicios reales.
+
+### Estructura de Directorios
+
+```text
+/
+├── components/            # Componentes de UI (Vistas y Reutilizables)
+│   ├── AuthView.tsx       # Login y Registro
+│   ├── DashboardView.tsx  # Panel principal
+│   ├── TaskModal.tsx      # Formulario de Tareas
+│   └── ...
+├── services/              # Capa de Abstracción de API (Simulación de Backend)
+│   ├── authService.ts     # Cliente del Microservicio de Usuarios
+│   └── taskService.ts     # Cliente del Microservicio de Tareas
+├── types.ts               # Definiciones de TypeScript (Modelos)
+├── App.tsx                # Controlador Principal
+└── index.tsx              # Punto de entrada
+```
+
+### Nota sobre los Servicios
+Los archivos en la carpeta `services/` actúan como proxies. Actualmente persisten datos en `localStorage` para facilitar la demostración sin necesidad de desplegar un backend real. Para conectar con una API real en el futuro, solo es necesario modificar estos archivos para realizar peticiones HTTP (fetch/axios) sin alterar la interfaz de usuario.
+
