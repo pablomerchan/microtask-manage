@@ -1,0 +1,5 @@
+{
+  "name": "MicroTask Manager",
+  "description": "Una interfaz de React diseñada para una arquitectura de microservicios, con autenticación de usuarios y gestión de tareas.",
+  "requestFramePermissions": []
+}

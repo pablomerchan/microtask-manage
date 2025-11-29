@@ -1,0 +1,48 @@
+#Estándar para proyectos React + Node.js, que cubre dependencias, builds, configuraciones 
+#locales y archivos del sistema.
+
+
+# Dependencias
+node_modules/
+
+# Builds y compilados
+dist/
+build/
+coverage/
+.tmp/
+
+# Archivos de entorno y configuración local
+.env
+.env.*
+*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Cachés
+.cache/
+.next/
+out/
+
+# Configuración de editores
+.vscode/
+.idea/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Claves y certificados
+*.pem
+*.key
+*.crt
+*.pfx
+
+# Otros temporales
+*.swp
+*.swo
