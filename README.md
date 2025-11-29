@@ -38,16 +38,46 @@ Una aplicación de gestión de tareas basada en una arquitectura simulada de mic
 Vera un mensaje indicando que el servidor está corriendo, generalmente en: 
 http://localhost:3000.
 
-Uso de la Aplicación
-Abra el navegador en esa dirección. Como simulamos una base de datos local (localStorage):
-Registro: Al entrar verás la pantalla de Login. Haz clic en "Registrarse", llena los datos (Nombre, Usuario, Contraseña) y crea tu cuenta.
-Login: Usa las credenciales que acabas de crear para ingresar.
-Gestión:
-Crear: Botón "Nueva" arriba a la derecha.
-Editar: Icono de lápiz sobre una tarea (aparece al pasar el mouse).
-Borrar: Icono de basura.
-Filtros: Usa los botones "Todas/Pendientes/Completadas" para filtrar la lista.
-Si cierras el navegador y vuelves a entrar, tus datos seguirán ahí (mientras no borres la caché del navegador), ya que se guardan en el almacenamiento local de tu navegador simulando una base de datos real.
+# 📘 Uso de la Aplicación
+
+Abra el navegador en la dirección indicada.  
+La aplicación simula una base de datos local utilizando **localStorage**.
+
+---
+
+## 🔑 Registro
+- Al entrar verás la pantalla de **Login**.
+- Haz clic en **"Registrarse"**.
+- Llena los datos: **Nombre, Usuario, Contraseña**.
+- Crea tu cuenta.
+
+---
+
+## 🔐 Login
+- Usa las credenciales que acabas de crear para ingresar.
+
+---
+
+## 🗂️ Gestión de Tareas
+
+### ➕ Crear
+- Botón **"Nueva"** arriba a la derecha.
+
+### ✏️ Editar
+- Icono de **lápiz** sobre una tarea (aparece al pasar el mouse).
+
+### 🗑️ Borrar
+- Icono de **basura**.
+
+### 🔍 Filtros
+- Usa los botones **"Todas / Pendientes / Completadas"** para filtrar la lista.
+
+---
+
+## 💾 Persistencia de Datos
+- Si cierras el navegador y vuelves a entrar, tus datos seguirán ahí.
+- Los datos se guardan en el **almacenamiento local del navegador**, simulando una base de datos real.
+- Ten en cuenta que si borras la caché del navegador, se eliminarán tus datos.
 
 
 
